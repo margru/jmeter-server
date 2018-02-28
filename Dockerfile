@@ -1,9 +1,8 @@
 FROM java:alpine
 LABEL Description="Apache JMeter Server"
 # Installig Pre-requisite Packages like wget & JRE
-RUN apt-get clean
-RUN apt-get update
-RUN apt-get -qy install \
+RUN apk update
+RUN apk -qy add \
     wget \
     default-jre-headless \
     telnet \
