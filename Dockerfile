@@ -18,15 +18,15 @@ RUN mkdir /jmeter-plugins \
     && wget https://jmeter-plugins.org/downloads/file/${JMETER_PLUGINS}.zip \
     && unzip -o ${JMETER_PLUGINS}.zip -d /jmeter/${JMETER_VERSION}/
 
+ENV JMETER_HOME /jmeter/${JMETER_VERSION}/
+ENV PATH $JMETER_HOME/bin:$PATH
+
 RUN keytool -genkey -keyalg RSA -alias rmi \
-    -keystore /jmeter/bin/rmi_keystore.jks \
+    -keystore ${JMETER_HOME}/bin/rmi_keystore.jks \
     -storepass changeit \
     -keypass changeit \
     -keysize 2048 \
     -dname "cn=jmeter-server" 
-
-ENV JMETER_HOME /jmeter/${JMETER_VERSION}/
-ENV PATH $JMETER_HOME/bin:$PATH
 
 # Ports required for JMeter Slaves/Server
 EXPOSE 1099 50000
