@@ -21,13 +21,6 @@ RUN mkdir /jmeter-plugins \
 ENV JMETER_HOME /jmeter/${JMETER_VERSION}/
 ENV PATH $JMETER_HOME/bin:$PATH
 
-RUN keytool -genkey -keyalg RSA -alias rmi \
-    -keystore ${JMETER_HOME}/bin/rmi_keystore.jks \
-    -storepass changeit \
-    -keypass changeit \
-    -keysize 2048 \
-    -dname "CN=rmi, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown" 
-
 # Ports required for JMeter Slaves/Server
 EXPOSE 1099 50000
 
