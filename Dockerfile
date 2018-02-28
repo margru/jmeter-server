@@ -1,6 +1,7 @@
 FROM java:alpine
 LABEL Description="Apache JMeter Server"
-RUN apk add wget unzip
+RUN apk update \
+    && apk add wget unzip
 
 ENV JMETER_VERSION apache-jmeter-4.0
 ENV JMETER_PLUGINS JMeterPlugins-ExtrasLibs-1.4.0
