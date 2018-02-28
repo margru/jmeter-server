@@ -1,11 +1,6 @@
 FROM java:alpine
 LABEL Description="Apache JMeter Server"
-# Installig Pre-requisite Packages like wget & JRE
-RUN apk add --no-cache \ 
-    wget \
-    telnet \
-    iputils-ping \
-    unzip
+RUN apk add wget unzip
 
 ENV JMETER_VERSION apache-jmeter-4.0
 ENV JMETER_PLUGINS JMeterPlugins-ExtrasLibs-1.4.0
@@ -30,7 +25,7 @@ RUN keytool -genkey -keyalg RSA -alias rmi \
     -dname "cn=jmeter-server" 
 
 ENV JMETER_HOME /jmeter/${JMETER_VERSION}/
-ENV PATH $JMETER_HOME/bin:$PATH                        
+ENV PATH $JMETER_HOME/bin:$PATH
 
 # Ports required for JMeter Slaves/Server
 EXPOSE 1099 50000

@@ -1,2 +1,2 @@
 # jmeter-server
-jmeter-server docker container
+alpine based jmeter4 server container image
