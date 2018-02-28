@@ -31,6 +31,7 @@ RUN keytool -genkey -keyalg RSA -alias rmi \
 # Ports required for JMeter Slaves/Server
 EXPOSE 1099 50000
 
+WORKDIR ${JMETER_HOME}/bin
 # Application to be executed to start the JMeter container
 ENTRYPOINT jmeter-server \
     -Dserver.rmi.ssl.keystore.alias=rmi \
