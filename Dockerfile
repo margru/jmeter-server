@@ -26,12 +26,13 @@ RUN keytool -genkey -keyalg RSA -alias rmi \
     -storepass changeit \
     -keypass changeit \
     -keysize 2048 \
-    -dname "cn=jmeter-server" 
+    -dname "CN=rmi, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown" 
 
 # Ports required for JMeter Slaves/Server
 EXPOSE 1099 50000
 
 # Application to be executed to start the JMeter container
 ENTRYPOINT jmeter-server \
+    -Dserver.rmi.ssl.keystore.alias=rmi \
     -Dserver.rmi.localport=50000 \
     -Dserver_port=1099
