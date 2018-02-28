@@ -1,10 +1,8 @@
 FROM java:alpine
 LABEL Description="Apache JMeter Server"
 # Installig Pre-requisite Packages like wget & JRE
-RUN apk update
-RUN apk -qy add \
+RUN apk add --no-cache \ 
     wget \
-    default-jre-headless \
     telnet \
     iputils-ping \
     unzip
