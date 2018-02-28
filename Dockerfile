@@ -34,6 +34,6 @@ EXPOSE 1099 50000
 WORKDIR ${JMETER_HOME}/bin
 # Application to be executed to start the JMeter container
 ENTRYPOINT jmeter-server \
-    -Dserver.rmi.ssl.keystore.alias=rmi \
+    -Dserver.rmi.ssl.disable=true \
     -Dserver.rmi.localport=50000 \
     -Dserver_port=1099
