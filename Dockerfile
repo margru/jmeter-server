@@ -1,10 +1,9 @@
-FROM java:alpine
+FROM frolvlad/alpine-java:jdk8-slim
 LABEL Description="Apache JMeter Server"
 RUN apk update \
     && apk add wget unzip
 
-ENV JMETER_VERSION apache-jmeter-4.0
-ENV JMETER_PLUGINS JMeterPlugins-ExtrasLibs-1.4.0
+ENV JMETER_VERSION apache-jmeter-5.1.1
 
 # Installing jmeter
 RUN mkdir /jmeter \
@@ -12,11 +11,6 @@ RUN mkdir /jmeter \
     && wget https://archive.apache.org/dist/jmeter/binaries/${JMETER_VERSION}.tgz \
     && tar -xzf ${JMETER_VERSION}.tgz \
     && rm ${JMETER_VERSION}.tgz
-
-RUN mkdir /jmeter-plugins \
-    && cd /jmeter-plugins/ \
-    && wget https://jmeter-plugins.org/downloads/file/${JMETER_PLUGINS}.zip \
-    && unzip -o ${JMETER_PLUGINS}.zip -d /jmeter/${JMETER_VERSION}/
 
 ENV JMETER_HOME /jmeter/${JMETER_VERSION}/
 ENV PATH $JMETER_HOME/bin:$PATH

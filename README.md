@@ -1,2 +1,2 @@
 # jmeter-server
-alpine based jmeter4 server container image
+frolvlad/alpine-java:jdk8-slim based jmeter 5.1.1 server container image
